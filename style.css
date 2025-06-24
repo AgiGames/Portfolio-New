@@ -1,0 +1,190 @@
+body {
+    margin: 0;
+    background-color: #111;
+    font-family: sans-serif;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background-image: url("images/background.jpg");
+    background-size: cover;          /* stretch to fill screen */
+    background-position: center;     /* center the image */
+    background-repeat: no-repeat;    /* prevent tiling */
+    height: 100vh;                   /* full viewport height */
+    width: 100vw;  
+}
+
+.app {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    width: 800px;
+    height: 600px;
+    background-color: #222;
+    color: white;
+    border: 2px solid gray;
+    box-sizing: border-box;
+    user-select: none;
+    border-radius: 5px;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+    transform-origin: bottom center; /* animate from bottom */;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.app.show {
+    transform: scale(1);
+    opacity: 1;
+}
+.app.hide {
+    transform: scale(0);
+    opacity: 0;
+}
+
+.big-app {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    width: 1280px;
+    height: 720px;
+    background-color: #222;
+    color: white;
+    border: 2px solid gray;
+    box-sizing: border-box;
+    user-select: none;
+    border-radius: 5px;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+    transform-origin: bottom center; /* animate from bottom */;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.big-app.show {
+    transform: scale(1);
+    opacity: 1;
+}
+.big-app.hide {
+    transform: scale(0);
+    opacity: 0;
+}
+
+.window {
+    display: flex;
+    justify-content: space-between; /* pushes children to edges */
+    align-items: center;
+    padding: 5px 10px;
+    background-color: #111;
+    color: rgb(255, 255, 255);
+    font-family: monospace;
+    font-size: large;
+}
+
+.bottom-handle {
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.terminal {
+    flex: 1;
+    padding: 10px;
+    margin-top: 2%;
+    overflow-y: auto;
+}
+
+#taskbar {
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+    display: flex;
+    width: 100%;
+    height: 50px;
+    background-color: #122836;
+    border: 2px solid rgb(90, 90, 90);
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+#console-button {
+    width: 50px;
+    height: 50px;
+    margin: 3px;
+    display: flex;
+    background-color: transparent;
+    border: none;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+#console-button:hover {
+    background-color: #555;
+    border: 1px solid white;
+    transform: scale(1.05);
+    cursor: pointer;
+    box-shadow: 0 0 8px white;
+    transition: all 0.2s ease;
+}
+#console-button:active {
+    transform: scale(1);
+    background-color: #555; 
+    box-shadow: 0 0 4px white;
+    transition: all 0.1s ease; 
+}
+
+.close-button {
+    border: none;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    transition: all 0.2 ease;
+    border-radius: 5px;
+    height: 20px;
+    width: 20px;
+    align-items: center;
+}
+.close-button:hover {
+    transform: scale(1.05);
+    background-color: #851212;
+    transition: all 0.2 ease;
+}
+
+.prompt {
+    color: rgb(75, 192, 75);
+    font-weight: bold;
+}
+
+.terminal-line {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 8px; /* Optional space between prompt and input */
+}
+
+.terminal-input {
+    flex: 1; /* ← This is key */
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-family: 'Cascadia Code', monospace;
+    font-weight: bold;
+    font-size: medium;
+    outline: none;
+}
+
+.other-website {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.other-website iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}

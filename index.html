@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Agilesh Arumugam - Portfolio</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <!-- the console's div and all their contents -->
+        <div id="console" class="app">
+            <!-- the outline window of the "app"-->
+            <div class="window">
+                <!-- with text saying 'terminal' and a close button to close the "app"-->
+                <b>Terminal</b><button id="console-close-button" class="close-button"><img src="images/cross.png" height="20px" width="20px"></button>
+
+            </div>
+            <!-- the terminal itself with the prompt and input text area and stuff -->
+            <div class="terminal">
+                <!-- represents a single line in the terminal -->
+                <div class="terminal-line">
+                    <!-- a shell prompt and text input to type whatever command -->
+                    <span class="prompt">portfolio:~$</span>
+                    <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" />
+
+                </div>
+
+            </div>
+            <!-- just an outline at the bottom of the window, does nothing -->
+            <div class="bottom-handle"></div>
+
+        </div>
+
+        <div id="about-me" class="big-app">
+
+            <div class="window">
+                <!-- with text saying 'terminal' and a close button to close the "app"-->
+                <b>About Me</b><button id="about-me-close-button" class="close-button"><img src="images/cross.png" height="20px" width="20px"></button>
+
+            </div>
+
+            <div class="other-website">
+                <iframe src="aboutme/aboutme.html"></iframe>
+            </div>
+
+            <div class="bottom-handle"></div>
+
+        </div>
+
+        <div id="portfolio" class="big-app">
+
+            <div class="window">
+                <!-- with text saying 'terminal' and a close button to close the "app"-->
+                <b>Portfolio</b><button id="portfolio-close-button" class="close-button"><img src="images/cross.png" height="20px" width="20px"></button>
+
+            </div>
+
+            <div class="other-website">
+                <iframe src="portfolio/portfolio.html"></iframe>
+            </div>
+
+            <div class="bottom-handle"></div>
+
+        </div>
+
+        <div id="contact" class="big-app">
+
+            <div class="window">
+                <!-- with text saying 'terminal' and a close button to close the "app"-->
+                <b>Contact</b><button id="contact-close-button" class="close-button"><img src="images/cross.png" height="20px" width="20px"></button>
+
+            </div>
+
+            <div class="other-website">
+                <iframe src="contact/contact.html"></iframe>
+            </div>
+
+            <div class="bottom-handle"></div>
+
+        </div>
+
+        <!-- the "taskbar" located at the bottom of the screen -->
+        <div id="taskbar">
+            <!-- contains a button which you can click to open the console -->
+            <button id="console-button"><img src="images/terminal.png" height="50px" width="50px"></button>
+
+        </div>
+
+    </body>
+
+</html>
+
+<script src="script.js"></script>
