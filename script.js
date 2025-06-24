@@ -237,7 +237,7 @@ function executeCommand(text) {
         return "command clear: clear the terminal\n\
 command about me: to view about me\n\
 command portfolio: to view portfolio\n\
-command contact me: to view contact details";
+command contact: to view contact details";
     }
     else if (text === "about me") {
         openAboutMe();
