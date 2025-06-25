@@ -44,8 +44,9 @@ consoleApp.addEventListener("touchstart", (e) => {
 
     if (e.clientY <= consoleApp.offsetTop + 30 && e.clientX <= consoleApp.offsetLeft + consoleApp.offsetWidth) {
         isDragging = true;
-        consoleOffsetX = e.clientX - consoleApp.offsetLeft;
-        consoleOffsetY = e.clientY - consoleApp.offsetTop;
+        const touch = e.touches[0];
+        consoleOffsetX = touch.clientX - consoleApp.offsetLeft;
+        consoleOffsetY = touch.clientY - consoleApp.offsetTop;
         activeDragTarget = consoleApp;
 
         consoleApp.style.zIndex = ++zIndexCounter;
@@ -78,8 +79,9 @@ aboutMe.addEventListener("touchstart", (e) => {
 
     if (e.clientY <= aboutMe.offsetTop + 30 && e.clientX <= aboutMe.offsetLeft + aboutMe.offsetWidth) {
         isDragging = true;
-        aboutMeOffsetX = e.clientX - aboutMe.offsetLeft;
-        aboutMeOffsetY = e.clientY - aboutMe.offsetTop;
+        const touch = e.touches[0];
+        aboutMeOffsetX = touch.clientX - aboutMe.offsetLeft;
+        aboutMeOffsetY = touch.clientY - aboutMe.offsetTop;
         activeDragTarget = aboutMe;
 
         aboutMe.style.zIndex = ++zIndexCounter;
@@ -112,8 +114,9 @@ portfolio.addEventListener("touchstart", (e) => {
 
     if (e.clientY <= portfolio.offsetTop + 30 && e.clientX <= portfolio.offsetLeft + portfolio.offsetWidth) {
         isDragging = true;
-        portfolioOffsetX = e.clientX - portfolio.offsetLeft;
-        portfolioOffsetY = e.clientY - portfolio.offsetTop;
+        const touch = e.touches[0];
+        portfolioOffsetX = touch.clientX - portfolio.offsetLeft;
+        portfolioOffsetY = touch.clientY - portfolio.offsetTop;
         activeDragTarget = portfolio;
 
         portfolio.style.zIndex = ++zIndexCounter;
@@ -146,8 +149,9 @@ contact.addEventListener("touchstart", (e) => {
 
     if (e.clientY <= contact.offsetTop + 30 && e.clientX <= contact.offsetLeft + contact.offsetWidth) {
         isDragging = true;
-        contactOffsetX = e.clientX - contact.offsetLeft;
-        contactOffsetY = e.clientY - contact.offsetTop;
+        const touch = e.touches[0];
+        contactOffsetX = touch.clientX - contact.offsetLeft;
+        contactOffsetY = touch.clientY - contact.offsetTop;
         activeDragTarget = contact;
 
         contact.style.zIndex = ++zIndexCounter;
@@ -180,8 +184,10 @@ document.addEventListener("touchmove", (e) => {
 
     if (!isDragging || !activeDragTarget) return;
 
-    latestMouseX = e.clientX
-    latestMouseY = e.clientY
+    e.preventDefault();
+
+    latestMouseX = touch.clientX;
+    latestMouseY = touch.clientY;
 
     requestAnimationFrame(() => {
         updateDragPosition();
