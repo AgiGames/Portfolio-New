@@ -3,12 +3,12 @@ const consoleBtn = document.getElementById("console-button");  // the button tha
 const consoleCloseBtn = document.getElementById("console-close-button") // the button that closes the console
 const terminal = document.querySelector('.terminal'); // the terminal inside the console
 const input = document.getElementById('terminal-input'); // one line of the terminal
-const aboutMe = document.getElementById("about-me");
-const aboutMeCloseBtn = document.getElementById("about-me-close-button");
-const portfolio = document.getElementById("portfolio");
-const portfolioCloseBtn = document.getElementById("portfolio-close-button");
-const contact = document.getElementById("contact")
-const contactCloseBtn = document.getElementById("contact-close-button")
+const aboutMe = document.getElementById("about-me"); // the about me app
+const aboutMeCloseBtn = document.getElementById("about-me-close-button"); // about me app's close button
+const portfolio = document.getElementById("portfolio"); // the portfolio app
+const portfolioCloseBtn = document.getElementById("portfolio-close-button"); // portfolio app's close button
+const contact = document.getElementById("contact") // the contact app
+const contactCloseBtn = document.getElementById("contact-close-button") // contact app's close button
 
 let isDragging = false;
 let activeDragTarget = null;
@@ -19,9 +19,10 @@ let aboutMeOffsetX, aboutMeOffsetY;
 let portfolioOffsetX, portfolioOffsetY
 let contactOffsetX, contactOffsetY
 
-// function that starts the dragging of window, when mouse down is pressed
+// functions that starts the dragging of current window, when mouse down is pressed or touch is started
 // offsetX is how much "in" along the x axis the cursor is in the window
 // offsetY is how much "in" along the y axis the cursor is in the window
+// iframes prevent dragging for some reason so we disable all iframe pointer events while dragging
 consoleApp.addEventListener("mousedown", (e) => {
 
     if (e.clientY <= consoleApp.offsetTop + 30 && e.clientX <= consoleApp.offsetLeft + consoleApp.offsetWidth) {
@@ -31,6 +32,27 @@ consoleApp.addEventListener("mousedown", (e) => {
         activeDragTarget = consoleApp;
 
         consoleApp.style.zIndex = ++zIndexCounter;
+
+        document.querySelectorAll("iframe").forEach(iframe => {
+            iframe.style.pointerEvents = "none";
+        });
+    }
+
+});
+
+consoleApp.addEventListener("touchstart", (e) => {
+
+    if (e.clientY <= consoleApp.offsetTop + 30 && e.clientX <= consoleApp.offsetLeft + consoleApp.offsetWidth) {
+        isDragging = true;
+        consoleOffsetX = e.clientX - consoleApp.offsetLeft;
+        consoleOffsetY = e.clientY - consoleApp.offsetTop;
+        activeDragTarget = consoleApp;
+
+        consoleApp.style.zIndex = ++zIndexCounter;
+
+        document.querySelectorAll("iframe").forEach(iframe => {
+            iframe.style.pointerEvents = "none";
+        });
     }
 
 });
@@ -44,6 +66,27 @@ aboutMe.addEventListener("mousedown", (e) => {
         activeDragTarget = aboutMe;
 
         aboutMe.style.zIndex = ++zIndexCounter;
+
+        document.querySelectorAll("iframe").forEach(iframe => {
+            iframe.style.pointerEvents = "none";
+        });
+    }
+
+});
+
+aboutMe.addEventListener("touchstart", (e) => {
+
+    if (e.clientY <= aboutMe.offsetTop + 30 && e.clientX <= aboutMe.offsetLeft + aboutMe.offsetWidth) {
+        isDragging = true;
+        aboutMeOffsetX = e.clientX - aboutMe.offsetLeft;
+        aboutMeOffsetY = e.clientY - aboutMe.offsetTop;
+        activeDragTarget = aboutMe;
+
+        aboutMe.style.zIndex = ++zIndexCounter;
+
+        document.querySelectorAll("iframe").forEach(iframe => {
+            iframe.style.pointerEvents = "none";
+        });
     }
 
 });
@@ -57,6 +100,27 @@ portfolio.addEventListener("mousedown", (e) => {
         activeDragTarget = portfolio;
 
         portfolio.style.zIndex = ++zIndexCounter;
+
+        document.querySelectorAll("iframe").forEach(iframe => {
+            iframe.style.pointerEvents = "none";
+        });
+    }
+
+});
+
+portfolio.addEventListener("touchstart", (e) => {
+
+    if (e.clientY <= portfolio.offsetTop + 30 && e.clientX <= portfolio.offsetLeft + portfolio.offsetWidth) {
+        isDragging = true;
+        portfolioOffsetX = e.clientX - portfolio.offsetLeft;
+        portfolioOffsetY = e.clientY - portfolio.offsetTop;
+        activeDragTarget = portfolio;
+
+        portfolio.style.zIndex = ++zIndexCounter;
+
+        document.querySelectorAll("iframe").forEach(iframe => {
+            iframe.style.pointerEvents = "none";
+        });
     }
 
 });
@@ -70,29 +134,58 @@ contact.addEventListener("mousedown", (e) => {
         activeDragTarget = contact;
 
         contact.style.zIndex = ++zIndexCounter;
+
+        document.querySelectorAll("iframe").forEach(iframe => {
+            iframe.style.pointerEvents = "none";
+        });
     }
 
 });
 
-// subtract the offset on respective axes to get the actual new position of left and top
-let latestMouseX = 0, latestMouseY = 0;
-let dragScheduled = false;
+contact.addEventListener("touchstart", (e) => {
 
+    if (e.clientY <= contact.offsetTop + 30 && e.clientX <= contact.offsetLeft + contact.offsetWidth) {
+        isDragging = true;
+        contactOffsetX = e.clientX - contact.offsetLeft;
+        contactOffsetY = e.clientY - contact.offsetTop;
+        activeDragTarget = contact;
+
+        contact.style.zIndex = ++zIndexCounter;
+
+        document.querySelectorAll("iframe").forEach(iframe => {
+            iframe.style.pointerEvents = "none";
+        });
+    }
+
+});
+
+
+// we have to actually animate the drag when the mouse or touch moves
+// so call an animation frame while we move the window itself while dragging
 document.addEventListener("mousemove", (e) => {
-    if (!isDragging || !activeDragTarget) return;
 
-    latestMouseX = e.clientX;
-    latestMouseY = e.clientY;
+    if (!isDragging || !activeDragTarget) return;
 
     if (!dragScheduled) {
         requestAnimationFrame(() => {
             updateDragPosition();
-            dragScheduled = false;
         });
-        dragScheduled = true;
     }
 });
 
+document.addEventListener("touchmove", (e) => {
+
+    if (!isDragging || !activeDragTarget) return;
+
+    if (!dragScheduled) {
+        requestAnimationFrame(() => {
+            updateDragPosition();
+        });
+    }
+
+});
+
+// function that updates the window position while dragging
 function updateDragPosition() {
     let offsetX = 0, offsetY = 0;
 
@@ -110,18 +203,33 @@ function updateDragPosition() {
         offsetY = contactOffsetY;
     }
 
+    // these two lines clamp the window from not going outside the view port
     const newLeft = Math.max(0, Math.min(window.innerWidth - activeDragTarget.offsetWidth, latestMouseX - offsetX));
     const newTop = Math.max(0, Math.min(window.innerHeight - activeDragTarget.offsetHeight, latestMouseY - offsetY));
 
+    // update the positions
     activeDragTarget.style.left = `${newLeft}px`;
     activeDragTarget.style.top = `${newTop}px`;
 }
 
 
-// if mouse up then no dragging
+// if mouse up or touch done then no dragging
+// switch on all iframes' pointer events
 document.addEventListener("mouseup", () => {
 
     isDragging = false;
+    document.querySelectorAll("iframe").forEach(iframe => {
+        iframe.style.pointerEvents = "auto";
+    });
+
+});
+
+document.addEventListener("touchend", () => {
+
+    isDragging = false;
+    document.querySelectorAll("iframe").forEach(iframe => {
+        iframe.style.pointerEvents = "auto";
+    });
 
 });
 
@@ -139,8 +247,8 @@ consoleBtn.addEventListener("click", () => {
 
 });
 
-// action listener that executes a function on click on the close button
-// removes show class from the console and adds hide class
+// action listeners that executes a function on click on the respective app's close button
+// removes show class from the app and adds hide class
 consoleCloseBtn.addEventListener("click", () => {
 
     consoleApp.classList.remove("show");
@@ -237,7 +345,7 @@ function executeCommand(text) {
         return "command clear: clear the terminal\n\
 command about me: to view about me\n\
 command portfolio: to view portfolio\n\
-command contact me: to view contact details";
+command contact: to view contact details";
     }
     else if (text === "about me") {
         openAboutMe();
@@ -248,11 +356,16 @@ command contact me: to view contact details";
     else if (text === "contact") {
         openContact();
     }
+    else {
+        return "INVALID COMMAND"
+    }
 
     return "";
 
 }
 
+// functions that opens the respective apps
+// removes hide class and adds show class
 function openAboutMe() {
 
     aboutMe.classList.remove("hide");

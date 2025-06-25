@@ -5,10 +5,10 @@ body {
     overflow-x: hidden;
     overflow-y: hidden;
     background-image: url("images/background.jpg");
-    background-size: cover;          /* stretch to fill screen */
-    background-position: center;     /* center the image */
-    background-repeat: no-repeat;    /* prevent tiling */
-    height: 100vh;                   /* full viewport height */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
     width: 100vw;  
 }
 
@@ -27,7 +27,7 @@ body {
     transform: scale(0);
     opacity: 0;
     transition: transform 0.2s ease-out, opacity 0.2s ease-out;
-    transform-origin: bottom center; /* animate from bottom */;
+    transform-origin: bottom center;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -56,7 +56,7 @@ body {
     transform: scale(0);
     opacity: 0;
     transition: transform 0.2s ease-out, opacity 0.2s ease-out;
-    transform-origin: bottom center; /* animate from bottom */;
+    transform-origin: bottom center;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -72,7 +72,7 @@ body {
 
 .window {
     display: flex;
-    justify-content: space-between; /* pushes children to edges */
+    justify-content: space-between;
     align-items: center;
     padding: 5px 10px;
     background-color: #111;
@@ -162,7 +162,7 @@ body {
     display: flex;
     align-items: center;
     width: 100%;
-    gap: 8px; /* Optional space between prompt and input */
+    gap: 8px;
 }
 
 .terminal-input {
@@ -187,4 +187,37 @@ body {
     height: 100%;
     border: none;
     display: block;
+}
+
+@media (max-aspect-ratio: 3/4) {
+    .app {
+        width: 50%;
+        height: 50%;     
+    }
+    .big-app {
+        width: 70%;
+        height: 70%;
+    }
+}
+
+@media (max-aspect-ratio: 9/20) {
+    .app {
+        width: 50%;
+        height: 50%;     
+    }
+    .big-app {
+        width: 70%;
+        height: 70%;
+    }
+}
+
+@media (max-aspect-ratio: 9/16) {
+    .app {
+        width: 50%;
+        height: 50%;     
+    }
+    .big-app {
+        width: 70%;
+        height: 70%;
+    }
 }
