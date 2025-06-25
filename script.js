@@ -162,26 +162,30 @@ contact.addEventListener("touchstart", (e) => {
 
 // we have to actually animate the drag when the mouse or touch moves
 // so call an animation frame while we move the window itself while dragging
+let latestMouseX = 0
+let latestMouseY = 0
 document.addEventListener("mousemove", (e) => {
 
     if (!isDragging || !activeDragTarget) return;
 
-    if (!dragScheduled) {
-        requestAnimationFrame(() => {
-            updateDragPosition();
-        });
-    }
+    latestMouseX = e.clientX
+    latestMouseY = e.clientY
+
+    requestAnimationFrame(() => {
+        updateDragPosition();
+    });
 });
 
 document.addEventListener("touchmove", (e) => {
 
     if (!isDragging || !activeDragTarget) return;
 
-    if (!dragScheduled) {
-        requestAnimationFrame(() => {
-            updateDragPosition();
-        });
-    }
+    latestMouseX = e.clientX
+    latestMouseY = e.clientY
+
+    requestAnimationFrame(() => {
+        updateDragPosition();
+    });
 
 });
 
