@@ -25,6 +25,8 @@ let contactOffsetX, contactOffsetY
 // iframes prevent dragging for some reason so we disable all iframe pointer events while dragging
 consoleApp.addEventListener("mousedown", (e) => {
 
+    e.preventDefault();
+
     if (e.clientY <= consoleApp.offsetTop + 30 && e.clientX <= consoleApp.offsetLeft + consoleApp.offsetWidth) {
         isDragging = true;
         consoleOffsetX = e.clientX - consoleApp.offsetLeft;
@@ -41,6 +43,8 @@ consoleApp.addEventListener("mousedown", (e) => {
 });
 
 consoleApp.addEventListener("touchstart", (e) => {
+
+    e.preventDefault();
 
     if (e.clientY <= consoleApp.offsetTop + 30 && e.clientX <= consoleApp.offsetLeft + consoleApp.offsetWidth) {
         isDragging = true;
@@ -60,6 +64,8 @@ consoleApp.addEventListener("touchstart", (e) => {
 
 aboutMe.addEventListener("mousedown", (e) => {
 
+    e.preventDefault();
+
     if (e.clientY <= aboutMe.offsetTop + 30 && e.clientX <= aboutMe.offsetLeft + aboutMe.offsetWidth) {
         isDragging = true;
         aboutMeOffsetX = e.clientX - aboutMe.offsetLeft;
@@ -76,6 +82,8 @@ aboutMe.addEventListener("mousedown", (e) => {
 });
 
 aboutMe.addEventListener("touchstart", (e) => {
+
+    e.preventDefault();
 
     if (e.clientY <= aboutMe.offsetTop + 30 && e.clientX <= aboutMe.offsetLeft + aboutMe.offsetWidth) {
         isDragging = true;
@@ -95,6 +103,8 @@ aboutMe.addEventListener("touchstart", (e) => {
 
 portfolio.addEventListener("mousedown", (e) => {
 
+    e.preventDefault();
+
     if (e.clientY <= portfolio.offsetTop + 30 && e.clientX <= portfolio.offsetLeft + portfolio.offsetWidth) {
         isDragging = true;
         portfolioOffsetX = e.clientX - portfolio.offsetLeft;
@@ -111,6 +121,8 @@ portfolio.addEventListener("mousedown", (e) => {
 });
 
 portfolio.addEventListener("touchstart", (e) => {
+
+    e.preventDefault();
 
     if (e.clientY <= portfolio.offsetTop + 30 && e.clientX <= portfolio.offsetLeft + portfolio.offsetWidth) {
         isDragging = true;
@@ -130,6 +142,8 @@ portfolio.addEventListener("touchstart", (e) => {
 
 contact.addEventListener("mousedown", (e) => {
 
+    e.preventDefault();
+
     if (e.clientY <= contact.offsetTop + 30 && e.clientX <= contact.offsetLeft + contact.offsetWidth) {
         isDragging = true;
         contactOffsetX = e.clientX - contact.offsetLeft;
@@ -146,6 +160,8 @@ contact.addEventListener("mousedown", (e) => {
 });
 
 contact.addEventListener("touchstart", (e) => {
+
+    e.preventDefault();
 
     if (e.clientY <= contact.offsetTop + 30 && e.clientX <= contact.offsetLeft + contact.offsetWidth) {
         isDragging = true;
