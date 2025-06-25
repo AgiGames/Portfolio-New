@@ -25,7 +25,7 @@ let contactOffsetX, contactOffsetY
 // iframes prevent dragging for some reason so we disable all iframe pointer events while dragging
 consoleApp.addEventListener("mousedown", (e) => {
 
-    if (e.clientY <= consoleApp.offsetTop + 30 && e.clientX <= consoleApp.offsetLeft + consoleApp.offsetWidth) {
+    if (e.clientY <= consoleApp.offsetTop + 30 && e.clientX <= consoleApp.offsetLeft + consoleApp.offsetWidth - 30) {
         e.preventDefault();
         isDragging = true;
         consoleOffsetX = e.clientX - consoleApp.offsetLeft;
@@ -45,7 +45,7 @@ consoleApp.addEventListener("touchstart", (e) => {
 
     const touch = e.touches[0];
 
-    if (touch.clientY <= consoleApp.offsetTop + 30 && touch.clientX <= consoleApp.offsetLeft + consoleApp.offsetWidth) {
+    if (touch.clientY <= consoleApp.offsetTop + 30 && touch.clientX <= consoleApp.offsetLeft + consoleApp.offsetWidth - 30) {
         e.preventDefault();
         isDragging = true;
         consoleOffsetX = touch.clientX - consoleApp.offsetLeft;
