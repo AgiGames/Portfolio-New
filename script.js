@@ -25,9 +25,8 @@ let contactOffsetX, contactOffsetY
 // iframes prevent dragging for some reason so we disable all iframe pointer events while dragging
 consoleApp.addEventListener("mousedown", (e) => {
 
-    e.preventDefault();
-
     if (e.clientY <= consoleApp.offsetTop + 30 && e.clientX <= consoleApp.offsetLeft + consoleApp.offsetWidth) {
+        e.preventDefault();
         isDragging = true;
         consoleOffsetX = e.clientX - consoleApp.offsetLeft;
         consoleOffsetY = e.clientY - consoleApp.offsetTop;
@@ -44,11 +43,11 @@ consoleApp.addEventListener("mousedown", (e) => {
 
 consoleApp.addEventListener("touchstart", (e) => {
 
-    e.preventDefault();
+    const touch = e.touches[0];
 
-    if (e.clientY <= consoleApp.offsetTop + 30 && e.clientX <= consoleApp.offsetLeft + consoleApp.offsetWidth) {
+    if (touch.clientY <= consoleApp.offsetTop + 30 && touch.clientX <= consoleApp.offsetLeft + consoleApp.offsetWidth) {
+        e.preventDefault();
         isDragging = true;
-        const touch = e.touches[0];
         consoleOffsetX = touch.clientX - consoleApp.offsetLeft;
         consoleOffsetY = touch.clientY - consoleApp.offsetTop;
         activeDragTarget = consoleApp;
@@ -64,9 +63,8 @@ consoleApp.addEventListener("touchstart", (e) => {
 
 aboutMe.addEventListener("mousedown", (e) => {
 
-    e.preventDefault();
-
     if (e.clientY <= aboutMe.offsetTop + 30 && e.clientX <= aboutMe.offsetLeft + aboutMe.offsetWidth) {
+        e.preventDefault();
         isDragging = true;
         aboutMeOffsetX = e.clientX - aboutMe.offsetLeft;
         aboutMeOffsetY = e.clientY - aboutMe.offsetTop;
@@ -83,11 +81,11 @@ aboutMe.addEventListener("mousedown", (e) => {
 
 aboutMe.addEventListener("touchstart", (e) => {
 
-    e.preventDefault();
+    const touch = e.touches[0];
 
-    if (e.clientY <= aboutMe.offsetTop + 30 && e.clientX <= aboutMe.offsetLeft + aboutMe.offsetWidth) {
+    if (touch.clientY <= aboutMe.offsetTop + 30 && touch.clientX <= aboutMe.offsetLeft + aboutMe.offsetWidth) {
+        e.preventDefault();
         isDragging = true;
-        const touch = e.touches[0];
         aboutMeOffsetX = touch.clientX - aboutMe.offsetLeft;
         aboutMeOffsetY = touch.clientY - aboutMe.offsetTop;
         activeDragTarget = aboutMe;
@@ -102,10 +100,9 @@ aboutMe.addEventListener("touchstart", (e) => {
 });
 
 portfolio.addEventListener("mousedown", (e) => {
-
-    e.preventDefault();
-
+    
     if (e.clientY <= portfolio.offsetTop + 30 && e.clientX <= portfolio.offsetLeft + portfolio.offsetWidth) {
+        e.preventDefault();
         isDragging = true;
         portfolioOffsetX = e.clientX - portfolio.offsetLeft;
         portfolioOffsetY = e.clientY - portfolio.offsetTop;
@@ -122,11 +119,11 @@ portfolio.addEventListener("mousedown", (e) => {
 
 portfolio.addEventListener("touchstart", (e) => {
 
-    e.preventDefault();
+    const touch = e.touches[0];
 
-    if (e.clientY <= portfolio.offsetTop + 30 && e.clientX <= portfolio.offsetLeft + portfolio.offsetWidth) {
+    if (touch.clientY <= portfolio.offsetTop + 30 && touch.clientX <= portfolio.offsetLeft + portfolio.offsetWidth) {
+        e.preventDefault();
         isDragging = true;
-        const touch = e.touches[0];
         portfolioOffsetX = touch.clientX - portfolio.offsetLeft;
         portfolioOffsetY = touch.clientY - portfolio.offsetTop;
         activeDragTarget = portfolio;
@@ -142,9 +139,8 @@ portfolio.addEventListener("touchstart", (e) => {
 
 contact.addEventListener("mousedown", (e) => {
 
-    e.preventDefault();
-
     if (e.clientY <= contact.offsetTop + 30 && e.clientX <= contact.offsetLeft + contact.offsetWidth) {
+        e.preventDefault();
         isDragging = true;
         contactOffsetX = e.clientX - contact.offsetLeft;
         contactOffsetY = e.clientY - contact.offsetTop;
@@ -161,11 +157,11 @@ contact.addEventListener("mousedown", (e) => {
 
 contact.addEventListener("touchstart", (e) => {
 
-    e.preventDefault();
+    const touch = e.touches[0];
 
-    if (e.clientY <= contact.offsetTop + 30 && e.clientX <= contact.offsetLeft + contact.offsetWidth) {
+    if (touch.clientY <= contact.offsetTop + 30 && touch.clientX <= contact.offsetLeft + contact.offsetWidth) {
+        e.preventDefault();
         isDragging = true;
-        const touch = e.touches[0];
         contactOffsetX = touch.clientX - contact.offsetLeft;
         contactOffsetY = touch.clientY - contact.offsetTop;
         activeDragTarget = contact;
