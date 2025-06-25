@@ -186,6 +186,7 @@ document.addEventListener("touchmove", (e) => {
 
     e.preventDefault();
 
+    const touch = e.touches[0];
     latestMouseX = touch.clientX;
     latestMouseY = touch.clientY;
 

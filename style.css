@@ -198,6 +198,9 @@ body {
         width: 70%;
         height: 70%;
     }
+    .window {
+        padding: 10px 10px;
+    }
 }
 
 @media (max-aspect-ratio: 9/20) {
@@ -209,6 +212,9 @@ body {
         width: 70%;
         height: 70%;
     }
+    .window {
+        padding: 10px 10px;
+    }
 }
 
 @media (max-aspect-ratio: 9/16) {
@@ -219,5 +225,8 @@ body {
     .big-app {
         width: 70%;
         height: 70%;
+    }
+    .window {
+        padding: 10px 10px;
     }
 }
